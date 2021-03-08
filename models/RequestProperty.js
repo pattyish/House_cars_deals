@@ -1,32 +1,6 @@
 const mongoose = require('mongoose');
 
-const propertySchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  negotiation: {
-    type: Boolean,
-    default: false,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-  images: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
+const RequestProSchema = new mongoose.Schema({
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
@@ -37,14 +11,34 @@ const propertySchema = new mongoose.Schema({
     ref: 'SubCategory',
     required: true,
   },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
   advertType: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Advert',
+    required: true,
+  },
+  budget: {
+    currency: {
+      type: String,
+      required: true,
+    },
+    minimun: {
+      type: Number,
+      required: true,
+    },
+    maximun: {
+      type: Number,
+      required: true,
+    },
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  neighborhood: {
+    type: String,
+  },
+  timeNeed: {
+    type: String,
     required: true,
   },
   propertyDetail: {
@@ -84,21 +78,16 @@ const propertySchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    sector: {
+  },
+  contactUser: {
+    firstName: {
       type: String,
       required: true,
     },
-    village: {
+    lastName: {
       type: String,
+      required: true,
     },
-    longitude: {
-      type: String,
-    },
-    latutide: {
-      type: String,
-    },
-  },
-  contactUser: {
     phoneNumber: {
       type: String,
       required: true,
@@ -106,20 +95,6 @@ const propertySchema = new mongoose.Schema({
     email: {
       type: String,
       required: true,
-    },
-    location: {
-      country: {
-        type: String,
-        required: true,
-      },
-      city: {
-        type: String,
-        required: true,
-      },
-      district: {
-        type: String,
-        required: true,
-      },
     },
   },
   createdAt: {
@@ -136,4 +111,7 @@ const propertySchema = new mongoose.Schema({
   },
 });
 
-module.exports = Property = mongoose.model('Property', propertySchema);
+module.exports = RequestProperty = mongoose.model(
+  'RequestProperty',
+  RequestProSchema,
+);
