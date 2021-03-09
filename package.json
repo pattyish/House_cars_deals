@@ -4,6 +4,8 @@
   "description": "house and cars for rent and sell ",
   "main": "server.js ",
   "scripts": {
+    "start": "node server",
+    "devStart": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,7 +40,11 @@
     "bcryptjs": "^2.4.3",
     "config": "^3.3.4",
     "express": "^4.17.1",
+    "express-validator": "^6.10.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.19"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
   }
 }

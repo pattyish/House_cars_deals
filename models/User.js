@@ -25,6 +25,9 @@ const userSchema = new mongoose.Schema({
   phoneNbr2: {
     type: String,
   },
+  Bio: {
+    type: String,
+  },
   address: {
     country: {
       type: String,

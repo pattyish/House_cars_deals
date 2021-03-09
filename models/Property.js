@@ -7,7 +7,6 @@ const propertySchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: true,
   },
   description: {
     type: String,
@@ -17,14 +16,13 @@ const propertySchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  image: {
+  mainImage: {
     type: String,
     required: true,
   },
   images: [
     {
       type: String,
-      required: true,
     },
   ],
   category: {
@@ -72,23 +70,23 @@ const propertySchema = new mongoose.Schema({
     },
   },
   propertyLocation: {
-    country: {
+    proCountry: {
       type: String,
       required: true,
     },
-    city: {
+    proCity: {
       type: String,
       required: true,
     },
-    district: {
+    proDistrict: {
       type: String,
       required: true,
     },
-    sector: {
+    proSector: {
       type: String,
       required: true,
     },
-    village: {
+    proVillage: {
       type: String,
     },
     longitude: {
@@ -108,15 +106,15 @@ const propertySchema = new mongoose.Schema({
       required: true,
     },
     location: {
-      country: {
+      agentCountry: {
         type: String,
         required: true,
       },
-      city: {
+      agentCity: {
         type: String,
         required: true,
       },
-      district: {
+      agentDistrict: {
         type: String,
         required: true,
       },
