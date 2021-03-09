@@ -4,8 +4,8 @@
   "description": "house and cars for rent and sell ",
   "main": "server.js ",
   "scripts": {
-    "start": "node server",
-    "devStart": "nodemon server",
+    "start": "node --exec babel-node server.js",
+    "devStart": "nodemon --exec babel-node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,13 +37,18 @@
   },
   "homepage": "https://github.com/pattyish/House_cars_deals#readme",
   "dependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.19"
+    "mongoose": "^5.11.19",
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "morgan": "^1.10.0"
