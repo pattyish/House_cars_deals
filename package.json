@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node --exec babel-node server.js",
     "devStart": "nodemon --exec babel-node server.js",
+    "createTables": "babel-node database/creatingTables DatabaseTables",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
