@@ -8,6 +8,6 @@ import {
 const router = express.Router();
 
 router.post('/register', agentRegFormValidation, User.createAccount);
-// route.post('/login');
+router.post('/login', loginFormValidation, User.login );
 
 export default router;
