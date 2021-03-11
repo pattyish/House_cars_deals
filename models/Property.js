@@ -1,137 +1,53 @@
-const mongoose = require('mongoose');
+import moment from 'moment';
 
-const propertySchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  negotiation: {
-    type: Boolean,
-    default: false,
-  },
-  mainImage: {
-    type: String,
-    required: true,
-  },
-  images: [
-    {
-      type: String,
-    },
-  ],
-  category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true,
-  },
-  subCategory: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'SubCategory',
-    required: true,
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  advertType: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Advert',
-    required: true,
-  },
-  propertyDetail: {
-    bedroom: {
-      type: Number,
-    },
-    area: {
-      type: Number,
-    },
-    bathroom: {
-      type: Number,
-    },
-    plotSize: {
-      type: Number,
-    },
-    livingRoom: {
-      type: Number,
-    },
-    numberFloors: {
-      type: Number,
-    },
-    parking: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  propertyLocation: {
-    proCountry: {
-      type: String,
-      required: true,
-    },
-    proCity: {
-      type: String,
-      required: true,
-    },
-    proDistrict: {
-      type: String,
-      required: true,
-    },
-    proSector: {
-      type: String,
-      required: true,
-    },
-    proVillage: {
-      type: String,
-    },
-    longitude: {
-      type: String,
-    },
-    latutide: {
-      type: String,
-    },
-  },
-  contactUser: {
-    phoneNumber: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
-    location: {
-      agentCountry: {
-        type: String,
-        required: true,
-      },
-      agentCity: {
-        type: String,
-        required: true,
-      },
-      agentDistrict: {
-        type: String,
-        required: true,
-      },
-    },
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  expiredDate: {
-    type: Date,
-    required: true,
-  },
-  status: {
-    type: Boolean,
-    default: true,
-  },
-});
+class PropertySchema {
+  constructor(property) {
+    (this.title = property.title),
+      (this.description = property.description),
+      (this.main_image = property.main_image),
+      (this.advert_type_id = property.advert_type_id),
+      (this.sub_categ_id = property.sub_categ_id),
+      (this.createdAt = moment.defaultFormat()),
+      (this.expiredAt = property.expiredAt),
+      (this.status = true);
+  }
+  static landDetails = (landDetail) => {
+    return {
+      property_id: landDetail.property_id,
+      plot_size: landDetail.plot_size,
+      longitude: landDetail.longitude,
+      latutide: landDetail.latutide,
+    };
+  };
+  static realestateDetails = (realestDetail) => {
+    return {
+      property_id: realestDetail.property_id,
+      bedroom: realestDetail.bedroom,
+      bathroom: realestDetail.bathroom,
+      floors: realestDetail.floors,
+      living_area: realestDetail.living_area,
+      plot_size: realestDetail.plot_size,
+      parking: realestDetail.parking,
+      longitude: realestDetail.longitude,
+      latutide: realestDetail.latutide,
+    };
+  };
+  static carDetails = (carDetail) => {
+    return {
+      property_id: carDetail.property_id,
+      make: carDetail.make,
+      model: carDetail.model,
+      year: carDetail.year,
+      transmission: carDetail.transmission,
+      fuel: carDetail.fuel,
+    };
+  };
+  static proImages = (images) => {
+    return {
+      property_id: images.property_id,
+      image_path: images.images_path,
+    };
+  };
+}
 
-module.exports = Property = mongoose.model('Property', propertySchema);
+export default PropertySchema;

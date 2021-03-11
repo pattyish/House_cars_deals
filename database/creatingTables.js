@@ -27,7 +27,7 @@ CREATE TABLE users(
 CREATE TABLE user_profile(
   user_prof_id BIGSERIAL PRIMARY KEY,
   user_id INTEGER,
-  Phone_nbr2 VARCHAR(50),
+  phone_nbr2 VARCHAR(50),
   country VARCHAR(50),
   city VARCHAR(100),
   district VARCHAR(100), 
@@ -124,6 +124,11 @@ CREATE TABLE land_details(
   plot_size INTEGER,
   longitude VARCHAR(100),
   latutide VARCHAR(100)
+);
+CREATE TABLE pro_images(
+  pro_images_id BIGSERIAL PRIMARY KEY,
+  property_id INTEGER,
+  images_path VARCHAR(256),
 );
 CREATE TABLE car_details(
   car_id BIGSERIAL PRIMARY KEY,
