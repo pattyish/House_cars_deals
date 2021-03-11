@@ -38,7 +38,7 @@ export const requestingCar = (reqVehicle) => {
     lastname: reqVehicle.lastname,
     email: reqVehicle.email,
     phone_nbr: reqVehicle.phone_nbr,
-    createdAt: moment.defaultFormat(),
+    createdAt: moment().format(),
     expiredDate: reqVehicle.expiredDate,
     status: true,
   };

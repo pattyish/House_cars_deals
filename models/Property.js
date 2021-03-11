@@ -7,19 +7,19 @@ class PropertySchema {
       (this.main_image = property.main_image),
       (this.advert_type_id = property.advert_type_id),
       (this.sub_categ_id = property.sub_categ_id),
-      (this.createdAt = moment.defaultFormat()),
+      (this.createdAt = moment().format()),
       (this.expiredAt = property.expiredAt),
       (this.status = true);
   }
-  static landDetails = (landDetail) => {
+  static landDetails(landDetail) {
     return {
       property_id: landDetail.property_id,
       plot_size: landDetail.plot_size,
       longitude: landDetail.longitude,
       latutide: landDetail.latutide,
     };
-  };
-  static realestateDetails = (realestDetail) => {
+  }
+  static realestateDetails(realestDetail) {
     return {
       property_id: realestDetail.property_id,
       bedroom: realestDetail.bedroom,
@@ -31,8 +31,8 @@ class PropertySchema {
       longitude: realestDetail.longitude,
       latutide: realestDetail.latutide,
     };
-  };
-  static carDetails = (carDetail) => {
+  }
+  static carDetails(carDetail) {
     return {
       property_id: carDetail.property_id,
       make: carDetail.make,
@@ -41,13 +41,13 @@ class PropertySchema {
       transmission: carDetail.transmission,
       fuel: carDetail.fuel,
     };
-  };
-  static proImages = (images) => {
+  }
+  static proImages(images) {
     return {
       property_id: images.property_id,
       image_path: images.images_path,
     };
-  };
+  }
 }
 
 export default PropertySchema;

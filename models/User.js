@@ -8,10 +8,10 @@ class UserSchema {
       (this.password = user.password),
       (this.phone = user.phone),
       (this.isAdmin = false),
-      (this.createdAt = moment.defaultFormat()),
+      (this.createdAt = moment().format()),
       (this.status = true);
   }
-  static userPrfofile = (user_id, userInf) => {
+  static userfofile(user_id, userInf) {
     return {
       user_id: user_id,
       phone_nbr2: userInf.phone_nbr2,
@@ -21,7 +21,7 @@ class UserSchema {
       sector: userInf.sector,
       bio: userInf.bio,
     };
-  };
+  }
   displayUser() {
     return {
       firstname: this.firstname,

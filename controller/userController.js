@@ -1,12 +1,13 @@
 import bcrypt from 'bcryptjs';
 import { validationResult } from 'express-validator';
+import Helper from '../hepler/user.helper';
 import UserSchema from '../models/User';
 import DbOperation from '../database/dbOperation';
 
 const DbQuery = new DbOperation('users');
 export default class User {
   // create Account
-  async createAccount(req, res) {
+  static async createAccount(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -29,10 +30,12 @@ export default class User {
         return res
           .status(500)
           .json({ status: 500, msg: 'Server fail to operate!!' });
+      const token = await Helper.generateToken(saveUser.user_id);
       res.status(201).json({
         status: 201,
         msg: 'Account created successful!!',
-        data: saveEmployee,
+        user: createUser.displayUser(),
+        token,
       });
     } catch (error) {
       console.error(error.message);
@@ -42,7 +45,22 @@ export default class User {
     }
   }
   // login
-  async Login(req, res) {}
+  async Login(req, res) {
+    const { email, password } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
+    try {
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({
+        msg: 'Server Error!!',
+      });
+    }
+  }
   // get user by id
   async getUserById(req, res) {}
   // forget password

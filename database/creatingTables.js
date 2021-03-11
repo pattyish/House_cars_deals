@@ -8,7 +8,8 @@ const DatabaseTables = pool.query(
   DROP TABLE IF EXISTS category;
   DROP TABLE IF EXISTS advert_type;
   DROP TABLE IF EXISTS car_details;
-  DROP TABLE IF EXISTS land_details;
+  DROP TABLE IF EXISTS land_details; 
+  DROP TABLE IF EXISTS pro_images;
   DROP TABLE IF EXISTS realest_details;
   DROP TABLE IF EXISTS properties;
   DROP TABLE IF EXISTS realestate_requests;
@@ -128,7 +129,7 @@ CREATE TABLE land_details(
 CREATE TABLE pro_images(
   pro_images_id BIGSERIAL PRIMARY KEY,
   property_id INTEGER,
-  images_path VARCHAR(256),
+  images_path VARCHAR(256)
 );
 CREATE TABLE car_details(
   car_id BIGSERIAL PRIMARY KEY,

@@ -1,6 +1,6 @@
 const { check } = require('express-validator');
 
-export const AgentRegFormValidation = [
+export const agentRegFormValidation = [
   check('firstname', 'First Name is Required').not().isEmpty().trim(),
   check('lastname', 'Last Name is Required').not().isEmpty().trim(),
   check('email', 'Email is Required and must be valid email')
@@ -12,10 +12,7 @@ export const AgentRegFormValidation = [
     .withMessage('must be at least 5 chars long')
     .matches(/\d/)
     .withMessage('must contain a number'),
-  check('phoneNbr1', 'Mobile Phone is Required').not().isEmpty(),
-  check('country', 'Country is Required').not().isEmpty(),
-  check('city', 'City is Required').not().isEmpty(),
-  check('district', 'District is Required').not().isEmpty(),
+  check('phone', 'Mobile Phone is Required').not().isEmpty(),
 ];
 
 export const loginFormValidation = [
