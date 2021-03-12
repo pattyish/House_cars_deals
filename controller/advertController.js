@@ -87,21 +87,18 @@ class AdvertController {
     }
   }
   //  getting all adverts
-  async getAllAdvert(req, res) {
+  static async getAllAdvert(req, res) {
     try {
-      const findProperty = await DbQuery.selectByField(
-        'property_id',
-        property_id,
-      );
-      if (!findProperty.count > 0)
+      const findProperties = await DbQuery.selectAll();
+      if (!findProperties.count > 0)
         return res.status(400).json({
           status: 400,
-          msg: `Property not Found!!!! `,
+          msg: `Properties not Found!!!! `,
         });
       res.status(200).json({
         status: 200,
-        msg: 'Property You are Requesting Founded!!',
-        property: findProperty.row[0],
+        msg: 'All properties founded!!',
+        property: findProperties.all,
       });
     } catch (error) {
       console.error(error.message);

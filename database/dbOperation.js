@@ -96,9 +96,9 @@ class Dboperations {
     try {
       const query = { text: `SELECT * FROM ${this.tableName} `, values: [] };
       const results = await pool.query(query);
-      const allEmployee = results.rows;
+      const all = results.rows;
       const count = results.rowCount;
-      return { allEmployee, count };
+      return { all, count };
     } catch (error) {
       return error;
     }
