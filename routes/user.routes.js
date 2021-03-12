@@ -8,6 +8,7 @@ import {
 const router = express.Router();
 
 router.post('/register', agentRegFormValidation, User.createAccount);
-router.post('/login', loginFormValidation, User.login );
+router.post('/login', loginFormValidation, User.login);
+router.get('/agents', User.getAgents);
 
 export default router;

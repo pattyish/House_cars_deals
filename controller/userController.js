@@ -81,6 +81,28 @@ export default class User {
       });
     }
   }
+  // get agents
+  static async getAgents(req, res) {
+    try {
+      const allAgents = await DbQuery.selectByField('isadmin', false);
+      if (!allAgents.count > 0)
+        return res.status(400).json({
+          status: 400,
+          msg: `There is No Agents Registered Yet!! `,
+        });
+
+      res.status(200).json({
+        status: 200,
+        msg: 'All Available Agents!!',
+        agents: allAgents.row,
+      });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({
+        msg: 'Server Error!!',
+      });
+    }
+  }
   // get user by id
   async getUserById(req, res) {}
   // forget password
