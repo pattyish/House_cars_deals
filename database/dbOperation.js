@@ -21,6 +21,23 @@ class Dboperations {
       console.log(`error on select ${error}`);
     }
   }
+  async selectByFieldWithColum(field, params, operator = '=') {
+    const query = {
+      text: `SELECT user_id, firstname, lastname, email, phone FROM ${this.tableName} WHERE ${field} ${operator} $1`,
+      values: [params],
+    };
+    try {
+      const results = await pool.query(query);
+      const row = results.rows;
+      const count = results.rowCount;
+      return {
+        row,
+        count,
+      };
+    } catch (error) {
+      console.log(`error on select ${error}`);
+    }
+  }
   async insertData(data) {
     const params = [];
     const chunks = [];
