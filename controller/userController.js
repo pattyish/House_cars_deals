@@ -84,7 +84,7 @@ export default class User {
   // get agents
   static async getAgents(req, res) {
     try {
-      const allAgents = await DbQuery.selectByField('isadmin', false);
+      const allAgents = await DbQuery.selectByFieldWithColum('isadmin', false);
       if (!allAgents.count > 0)
         return res.status(400).json({
           status: 400,
