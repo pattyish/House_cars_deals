@@ -4,12 +4,16 @@ class PropertySchema {
   constructor(property) {
     (this.title = property.title),
       (this.description = property.description),
-      (this.main_image = property.main_image),
+      (this.main_image = property.mainImage),
       (this.advert_type_id = property.advert_type_id),
       (this.sub_categ_id = property.sub_categ_id),
+      (this.user_id = property.user_id),
+      (this.proCountry = property.proCountry),
+      (this.proCity = property.proCity),
+      (this.proDistrict = property.proDistrict),
       (this.createdAt = moment().format()),
       (this.expiredAt = property.expiredAt),
-      (this.status = true);
+      (this.status = 'verified');
   }
   static landDetails(landDetail) {
     return {
@@ -51,3 +55,4 @@ class PropertySchema {
 }
 
 export default PropertySchema;
+

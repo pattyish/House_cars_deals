@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'config';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ export default function (req, res, next) {
   }
   try {
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = decoded.user;
+    req.user = decoded;
     next();
   } catch (error) {
     res.status(401).json({ msg: 'Token Is Not Valid!!!' });

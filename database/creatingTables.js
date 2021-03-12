@@ -64,9 +64,13 @@ CREATE TABLE properties(
   main_image VARCHAR(200) NOT null,
   advert_type_id INTEGER,
   sub_categ_id INTEGER,
+  user_id INTEGER,
+  proCountry VARCHAR(100) NOT null,
+  proCity VARCHAR(100) NOT null,
+  proDistrict VARCHAR(100) NOT null,
   createdAt timestamp NOT null,
   expiredAt timestamp NOT null,
-  status boolean
+  status VARCHAR(50) NOT null
 );
 CREATE TABLE realestate_requests(
   pro_req_id BIGSERIAL PRIMARY KEY,
@@ -146,7 +150,7 @@ INSERT INTO users
     'patrick',
     'ishimwe',
     'patty@gmail.com',
-    'patty@123',
+    '$2a$10$0L5Cu1irRcjwnUQctSqRGemUHVP48TYbOdujLKMpdCEtZ45hfxgXq',
     '0782214140',
      true,
      true

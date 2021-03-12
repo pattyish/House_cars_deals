@@ -67,6 +67,7 @@ export default class User {
         });
 
       const token = await Helper.generateToken(isUserExist.row[0].user_id);
+      console.log(isUserExist.row[0].user_id);
       res.status(200).json({
         status: 200,
         msg: 'User Logged In successful!!',
