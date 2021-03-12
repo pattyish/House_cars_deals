@@ -39,7 +39,27 @@ class AdvertController {
     }
   }
   //   get All his adverts
-  async getAdvertsByUserId(req, res) {}
+  static async getAdvertsByUserId(req, res) {
+    try {
+      const user = req.user;
+      const findProperties = await DbQuery.selectByField('user_id', user.id);
+      if (!findProperties.count > 0)
+        return res.status(400).json({
+          status: 400,
+          msg: `Property not Found!!!! `,
+        });
+      res.status(200).json({
+        status: 200,
+        msg: 'All properties Posted By you',
+        property: findProperties.row,
+      });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({
+        msg: 'Server Error!!',
+      });
+    }
+  }
   //   @get Advert by Id
   //   Private
   static async getAdvertById(req, res) {
@@ -55,6 +75,32 @@ class AdvertController {
           msg: `Property not Found!!!! `,
         });
       res.status(200).json({
+        status: 200,
+        msg: 'Property You are Requesting Founded!!',
+        property: findProperty.row[0],
+      });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({
+        msg: 'Server Error!!',
+      });
+    }
+  }
+  //  getting all adverts
+  async getAllAdvert(req, res) {
+    try {
+      const findProperty = await DbQuery.selectByField(
+        'property_id',
+        property_id,
+      );
+      if (!findProperty.count > 0)
+        return res.status(400).json({
+          status: 400,
+          msg: `Property not Found!!!! `,
+        });
+      res.status(200).json({
+        status: 200,
+        msg: 'Property You are Requesting Founded!!',
         property: findProperty.row[0],
       });
     } catch (error) {
