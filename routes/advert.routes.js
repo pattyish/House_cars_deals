@@ -1,5 +1,4 @@
 import express from 'express';
-import { body } from 'express-validator';
 import AdvertController from '../controller/advertController';
 import { advertValidation } from '../validation/forms.validation';
 import upload from '../middleware/upload.image';

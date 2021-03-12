@@ -38,16 +38,38 @@ class AdvertController {
       });
     }
   }
+  //   get All his adverts
+  async getAdvertsByUserId(req, res) {}
+  //   @get Advert by Id
+  //   Private
+  static async getAdvertById(req, res) {
+    try {
+      const property_id = req.params.property_id;
+      const findProperty = await DbQuery.selectByField(
+        'property_id',
+        property_id,
+      );
+      if (!findProperty.count > 0)
+        return res.status(400).json({
+          status: 400,
+          msg: `Property not Found!!!! `,
+        });
+      res.status(200).json({
+        property: findProperty.row[0],
+      });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({
+        msg: 'Server Error!!',
+      });
+    }
+  }
+  //   extend post expired date
+  async extendPostExperedDate(req, res) {}
   //   edit Adverts
   async editAdvert(req, res) {}
   //  delete Advert
   async deleteAdvert(req, res) {}
-  //   get All his adverts
-  async getAdvertsByUserId(req, res) {}
-  //   get Advert by Id
-  async getAdvertById(req, res) {}
-  //   extend post expired date
-  async extendPostExperedDate(req, res) {}
 }
 
 export default AdvertController;
